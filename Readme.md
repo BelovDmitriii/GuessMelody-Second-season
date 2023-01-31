@@ -1,4 +1,5 @@
-повторение ранее пройденного материала
+
+Этот проект лишь для повторения пройденного материала по React, Redux и TypeScript
 
 <a href="https://htmlacademy.ru/intensive/react"><img align="left" width="50" height="50" title="HTML Academy" src="https://up.htmlacademy.ru/static/img/intensive/react/logo-for-github.png"></a>
 
