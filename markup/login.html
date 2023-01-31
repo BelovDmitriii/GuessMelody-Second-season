@@ -19,17 +19,23 @@
       </filter>
     </svg>
     <section class="main" id="root">
-      <!-- Место для ваших экранов -->
-      <section class="welcome">
-        <div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
-        <button class="welcome__button"><span class="visually-hidden">Начать игру</span></button>
-        <h2 class="welcome__rules-title">Правила игры</h2>
-        <p class="welcome__text">Правила просты:</p>
-        <ul class="welcome__rules-list">
-          <li>Нужно ответить на все вопросы.</li>
-          <li>Можно допустить 3 ошибки.</li>
-        </ul>
-        <p class="welcome__text">Удачи!</p>
+      <section class="login">
+        <div class="login__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
+        <h2 class="login__title">Вы настоящий меломан!</h2>
+        <p class="login__text">Хотите узнать свой результат? Представтесь!</p>
+        <form class="login__form" action="">
+          <p class="login__field">
+            <label class="login__label" for="name">Логин</label>
+            <input class="login__input" type="text" name="name" id="name">
+          </p>
+          <p class="login__field">
+            <label class="login__label" for="password">Пароль</label>
+            <input class="login__input" type="text" name="password" id="password">
+            <span class="login__error">Неверный пароль</span>
+          </p>
+          <button class="login__button button" type="submit">Войти</button>
+        </form>
+        <button class="replay" type="button">Сыграть ещё раз</button>
       </section>
     </section>
   </main>
