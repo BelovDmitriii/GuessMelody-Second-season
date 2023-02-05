@@ -6,6 +6,7 @@ import GameOverScreen from '../game-over-screen/game-over-screen';
 import SuccessScreen from '../success-screen/success-screen';
 import QuestionArtist from '../question-artist-screen/question-artist-screen';
 import QuestionGenreScreen from '../question-genre-screen/question-genre-screen';
+import NotFoundScreen from '../not-found-screen/not-found-screen';
 
 type AppProps = {
   errorsCount: number;
@@ -38,6 +39,10 @@ function App({errorsCount}: AppProps): JSX.Element {
         <Route
           path={AppRoute.DevGenre}
           element={<QuestionGenreScreen />}
+        />
+        <Route
+          path='*'
+          element={<NotFoundScreen />}
         />
       </Routes>
     </BrowserRouter>
