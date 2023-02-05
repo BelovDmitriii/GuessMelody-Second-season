@@ -1,4 +1,4 @@
-function QuestionArtist(): JSX.Element  {
+function QuestionArtist():JSX.Element{
   return(
     <section className="game game--artist">
       <header className="game__header">
