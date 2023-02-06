@@ -4,11 +4,11 @@ import { AppRoute, AuthorizationStatus } from '../../consts/consts';
 import LoginScreen from '../login-screen/login-screen';
 import GameOverScreen from '../game-over-screen/game-over-screen';
 import SuccessScreen from '../success-screen/success-screen';
-import QuestionArtist from '../question-artist-screen/question-artist-screen';
 import QuestionGenreScreen from '../question-genre-screen/question-genre-screen';
+import QuestionArtistScreen from '../question-artist-screen/question-artist-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import PrivateRoutes from '../private-routes/private-routes';
-import { QuestionGenre, Questions } from '../../types/questions';
+import { QuestionGenre, Questions, QuestionArtist } from '../../types/questions';
 
 type AppProps = {
   errorsCount: number;
@@ -16,7 +16,7 @@ type AppProps = {
 }
 
 function App({errorsCount, questions}: AppProps): JSX.Element {
-  const [firstQuestion] = questions;
+  const [firstQuestion, secondQuestion] = questions;
   return (
     <BrowserRouter>
       <Routes>
@@ -44,7 +44,14 @@ function App({errorsCount, questions}: AppProps): JSX.Element {
         />
         <Route
           path={AppRoute.DevArtist}
-          element={<QuestionArtist />}
+          element={
+            <QuestionArtistScreen
+              question={secondQuestion as QuestionArtist}
+              onAnswer={() => {
+                throw new Error('Function \'onAnswer\' isn\'t implemented.');
+              }}
+            />
+          }
         />
         <Route
           path={AppRoute.DevGenre}
