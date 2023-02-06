@@ -9,6 +9,7 @@ import QuestionArtistScreen from '../question-artist-screen/question-artist-scre
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import PrivateRoutes from '../private-routes/private-routes';
 import { QuestionGenre, Questions, QuestionArtist } from '../../types/questions';
+import GameScreen from '../game-screen/game-screen';
 
 type AppProps = {
   errorsCount: number;
@@ -61,6 +62,14 @@ function App({errorsCount, questions}: AppProps): JSX.Element {
               onAnswer={() => {
                 throw new Error('Function \'onAnswer\' isn\'t implemented.');
               }}
+            />
+          }
+        />
+        <Route
+          path={AppRoute.Game}
+          element={
+            <GameScreen
+              questions={questions}
             />
           }
         />
