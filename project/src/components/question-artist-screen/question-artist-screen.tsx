@@ -49,13 +49,13 @@ function QuestionArtistScreen(props: QestionArtistScreenProps):JSX.Element{
                 type="radio"
                 name="answer"
                 value={`answer-${id}`}
-                id={`answer=${id}`}
+                id={`answer-${id}`}
                 onChange={(evt:ChangeEvent<HTMLInputElement>) => {
                   evt.preventDefault();
                   onAnswer(question, answer.artist);
                 }}
               />
-              <label className="artist__name" htmlFor="answer-3">
+              <label className="artist__name" htmlFor={`answer-${id}`}>
                 <img className="artist__picture" src={answer.picture} alt={answer.artist} />
                 {answer.artist}
               </label>
