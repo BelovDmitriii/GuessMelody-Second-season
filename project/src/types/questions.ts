@@ -27,4 +27,4 @@ export type QuestionArtist = {
 
 export type Question = QuestionArtist | QuestionGenre;
 
-export type questions = Question[];
+export type Questions = Question[];
