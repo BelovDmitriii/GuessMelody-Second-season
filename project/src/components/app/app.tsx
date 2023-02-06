@@ -8,12 +8,15 @@ import QuestionArtist from '../question-artist-screen/question-artist-screen';
 import QuestionGenreScreen from '../question-genre-screen/question-genre-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import PrivateRoutes from '../private-routes/private-routes';
+import { QuestionGenre, Questions } from '../../types/questions';
 
 type AppProps = {
   errorsCount: number;
+  questions: Questions;
 }
 
-function App({errorsCount}: AppProps): JSX.Element {
+function App({errorsCount, questions}: AppProps): JSX.Element {
+  const [firstQuestion] = questions;
   return (
     <BrowserRouter>
       <Routes>
@@ -45,7 +48,11 @@ function App({errorsCount}: AppProps): JSX.Element {
         />
         <Route
           path={AppRoute.DevGenre}
-          element={<QuestionGenreScreen />}
+          element={
+            <QuestionGenreScreen
+              question={firstQuestion as QuestionGenre}
+            />
+          }
         />
         <Route
           path='*'
