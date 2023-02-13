@@ -8,6 +8,7 @@ import NotFoundScreen from '../not-found-screen/not-found-screen';
 import PrivateRoutes from '../private-routes/private-routes';
 import { Questions } from '../../types/questions';
 import GameScreen from '../game-screen/game-screen';
+import SomeScreen from '../some-screen/some-screen';
 
 type AppProps = {
   errorsCount: number;
@@ -51,6 +52,10 @@ function App({errorsCount, questions}: AppProps): JSX.Element {
         <Route
           path='*'
           element={<NotFoundScreen />}
+        />
+        <Route
+          path='111'
+          element={<SomeScreen />}
         />
       </Routes>
     </BrowserRouter>

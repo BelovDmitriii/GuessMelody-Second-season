@@ -28,6 +28,11 @@ function WelcomeScreen({errorsCount}: WelcomeScreenProps): JSX.Element {
         <li>Можно допустить {errorsCount} ошибки.</li>
       </ul>
       <p className="welcome__text">Удачи!</p>
+      <button
+        onClick={() => navigate(AppRoute.Secret)}
+      >
+        Secret
+      </button>
     </section>
   );
 }

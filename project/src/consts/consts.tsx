@@ -4,6 +4,7 @@ export enum AppRoute{
   Result = '/result',
   Root = '/',
   Game = 'game',
+  Secret = '111',
 }
 
 export enum AuthorizationStatus{
