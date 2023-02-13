@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AppRoute } from '../../consts/consts';
 
 function SomeScreen(): JSX.Element {
   const [count, setCount] = useState(101);
   const [isVisible, setVisible] = useState(true);
+  const navigate = useNavigate();
 
   return(
     <>
@@ -20,9 +23,11 @@ function SomeScreen(): JSX.Element {
         {isVisible ? '- Закрыть кнопку' : '+ Открыть кнопку'}
       </button>
       {isVisible &&
-      <div>
-        лучше этого не видеть
-      </div>}
+        <button
+          onClick={() => navigate(AppRoute.Root)}
+        >
+        вернуться на главную страницу
+        </button>}
     </>
   );
 }
