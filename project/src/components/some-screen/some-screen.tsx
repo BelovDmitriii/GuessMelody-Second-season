@@ -29,7 +29,6 @@ function SomeScreen(): JSX.Element {
         >
         вернуться на главную страницу
         </button>}
-
     </>
   );
 }
