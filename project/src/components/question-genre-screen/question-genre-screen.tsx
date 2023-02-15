@@ -1,6 +1,7 @@
 import Logo from '../logo/logo';
 import { QuestionGenre, UserGenreQuestionAnswer } from '../../types/questions';
 import { useState, ChangeEvent, FormEvent } from 'react';
+import AudioPlayer from '../audio-player/audio-player';
 
 type QuestionGenreScreenProps = {
   question: QuestionGenre;
@@ -42,12 +43,10 @@ function QuestionGenreScreen(props: QuestionGenreScreenProps):JSX.Element {
             const keyValue = `${id}-${answer.src}`;
             return(
               <div key={keyValue} className="track">
-                <button className="track__button track__button--play" type="button"></button>
-                <div className="track__status">
-                  <audio
-                    src={answer.src}
-                  />
-                </div>
+                <AudioPlayer
+                  src={answer.src}
+                  autoPlay={id === 0}
+                />
                 <div className="game__answer">
                   <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${id}`}
                     id={`answer-${id}`}

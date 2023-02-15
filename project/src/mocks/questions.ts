@@ -10,13 +10,13 @@ export const questions: Questions = [
       src: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Sax%2C_Rock%2C_and_Roll_%28ISRC_USUAN1100086%29.mp3',
       genre: 'rock'
     }, {
-      src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg',
+      src: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Punk_Rock_Opera_-_07_-_The_Deal.ogg',
       genre: 'blues',
     }, {
-      src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg',
+      src: 'https://upload.wikimedia.org/wikipedia/commons/d/d6/Take_the_Lead_%28ISRC_USUAN1100695%29.mp3',
       genre: 'jazz',
     }, {
-      src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg',
+      src: 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Pick_and_finger_dynamics_with_a_tube_overdrive_%28electric_guitar%2C_single_coil%29.ogg',
       genre: 'rock',
     }]
   }, {
