@@ -5,6 +5,7 @@ import { AppRoute } from '../../consts/consts';
 function SomeScreen(): JSX.Element {
   const [count, setCount] = useState(101);
   const [isVisible, setVisible] = useState(true);
+
   const navigate = useNavigate();
 
   return(
@@ -28,6 +29,7 @@ function SomeScreen(): JSX.Element {
         >
         вернуться на главную страницу
         </button>}
+
     </>
   );
 }
