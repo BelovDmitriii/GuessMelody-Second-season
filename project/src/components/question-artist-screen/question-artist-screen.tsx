@@ -9,7 +9,7 @@ type QestionArtistScreenProps = {
 }
 
 function QuestionArtistScreen(props: QestionArtistScreenProps):JSX.Element{
-  const {question, onAnswer} = props;
+  const {question, onAnswer, renderPlayer} = props;
   const {answers, song} = question;
 
   return(
