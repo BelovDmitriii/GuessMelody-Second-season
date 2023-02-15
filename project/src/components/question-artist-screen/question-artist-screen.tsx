@@ -1,17 +1,17 @@
 import Logo from '../logo/logo';
 import { QuestionArtist, UserArtistQuestionAnswer } from '../../types/questions';
-import { ChangeEvent, useState } from 'react';
-import AudioPlayer from '../audio-player/audio-player';
+import { ChangeEvent } from 'react';
 
 type QestionArtistScreenProps = {
   question: QuestionArtist;
   onAnswer: (question: QuestionArtist, answer: UserArtistQuestionAnswer) => void;
+  renderPlayer: (src: string, playerIndex: number) => JSX.Element;
 }
 
 function QuestionArtistScreen(props: QestionArtistScreenProps):JSX.Element{
   const {question, onAnswer} = props;
   const {answers, song} = question;
-  const [isPlaying, setPlaying] = useState(true);
+
   return(
     <section className="game game--artist">
       <header className="game__header">
@@ -34,11 +34,7 @@ function QuestionArtistScreen(props: QestionArtistScreenProps):JSX.Element{
         <h2 className="game__title">Кто исполняет эту песню?</h2>
         <div className="game__track">
           <div className="track">
-            <AudioPlayer
-              src={song.src}
-              isPlaying={isPlaying}
-              onPlayButtonClick = {() => setPlaying(!isPlaying)}
-            />
+            {renderPlayer(song.src, 0)}
           </div>
         </div>
 
