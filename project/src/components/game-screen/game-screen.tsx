@@ -1,10 +1,11 @@
 import { QuestionArtist, Questions, QuestionGenre } from '../../types/questions';
-import {useState} from 'react';
-import { FIRST_GAME_STEP, AppRoute, GameType } from '../../consts/consts';
 import { Navigate } from 'react-router-dom';
 import QuestionArtistScreen from '../question-artist-screen/question-artist-screen';
 import QuestionGenreScreen from '../question-genre-screen/question-genre-screen';
 import withAudioPlayer from '../../hocks/with-audio-player/with-audio-player';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { AppRoute, GameType } from '../../consts/consts';
+import { incrementStep } from '../../store/action';
 
 const ArtistQuestionScreenWrapped = withAudioPlayer(QuestionArtistScreen);
 const GenreQuestionScreenWrapped = withAudioPlayer(QuestionGenreScreen);
@@ -15,8 +16,9 @@ type GameScreenProps = {
 
 function GameScreen(props:GameScreenProps): JSX.Element {
   const {questions} = props;
-  const [step, setStep] = useState(FIRST_GAME_STEP);
+  const step = useAppSelector((state) => state.step);
   const question = questions[step];
+  const dispatch = useAppDispatch();
 
   if(step >= questions.length || !question){
     return <Navigate to={AppRoute.Root} />;
@@ -28,7 +30,7 @@ function GameScreen(props:GameScreenProps): JSX.Element {
         <ArtistQuestionScreenWrapped
           key={step}
           question={question as QuestionArtist}
-          onAnswer={() => setStep((prevStep) => prevStep + 1)}
+          onAnswer={() => dispatch(incrementStep())}
         />
       );
     case GameType.Genre:
@@ -36,7 +38,7 @@ function GameScreen(props:GameScreenProps): JSX.Element {
         <GenreQuestionScreenWrapped
           key={step}
           question={question as QuestionGenre}
-          onAnswer={() => setStep((prevStep) => prevStep + 1)}
+          onAnswer={() => dispatch(incrementStep())}
         />
       );
     default:
