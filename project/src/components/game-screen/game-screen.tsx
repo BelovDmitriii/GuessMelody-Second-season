@@ -6,6 +6,7 @@ import withAudioPlayer from '../../hocks/with-audio-player/with-audio-player';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { AppRoute, GameType } from '../../consts/consts';
 import { incrementStep } from '../../store/action';
+import Mistakes from '../mistakes/mistakes';
 
 const ArtistQuestionScreenWrapped = withAudioPlayer(QuestionArtistScreen);
 const GenreQuestionScreenWrapped = withAudioPlayer(QuestionGenreScreen);
@@ -16,7 +17,7 @@ type GameScreenProps = {
 
 function GameScreen(props:GameScreenProps): JSX.Element {
   const {questions} = props;
-  const step = useAppSelector((state) => state.step);
+  const {step, mistakes} = useAppSelector((state) => state);
   const question = questions[step];
   const dispatch = useAppDispatch();
 
@@ -31,7 +32,9 @@ function GameScreen(props:GameScreenProps): JSX.Element {
           key={step}
           question={question as QuestionArtist}
           onAnswer={() => dispatch(incrementStep())}
-        />
+        >
+          <Mistakes count={mistakes} />
+        </ArtistQuestionScreenWrapped>
       );
     case GameType.Genre:
       return (
@@ -39,7 +42,9 @@ function GameScreen(props:GameScreenProps): JSX.Element {
           key={step}
           question={question as QuestionGenre}
           onAnswer={() => dispatch(incrementStep())}
-        />
+        >
+          <Mistakes count = {mistakes} />
+        </GenreQuestionScreenWrapped>
       );
     default:
       return <Navigate to={AppRoute.Root} />;

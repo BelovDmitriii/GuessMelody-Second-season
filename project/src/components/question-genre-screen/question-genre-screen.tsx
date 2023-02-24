@@ -2,11 +2,11 @@ import Logo from '../logo/logo';
 import { QuestionGenre, UserGenreQuestionAnswer } from '../../types/questions';
 import { useState, ChangeEvent, FormEvent, PropsWithChildren } from 'react';
 
-type QuestionGenreScreenProps = PropsWithChildren {
+type QuestionGenreScreenProps = PropsWithChildren<{
   question: QuestionGenre;
   onAnswer: (question: QuestionGenre, answers: UserGenreQuestionAnswer) => void;
   renderPlayer: (src: string, playerIndex: number) => JSX.Element;
-}
+}>
 
 function QuestionGenreScreen(props: QuestionGenreScreenProps):JSX.Element {
   const {question, onAnswer, renderPlayer, children} = props;
@@ -24,7 +24,7 @@ function QuestionGenreScreen(props: QuestionGenreScreenProps):JSX.Element {
           />
         </svg>
 
-       {children}
+        {children}
       </header>
 
       <section className="game__screen">
