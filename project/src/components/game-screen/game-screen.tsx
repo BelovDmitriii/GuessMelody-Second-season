@@ -1,4 +1,4 @@
-import { QuestionArtist, Questions, QuestionGenre, Question, UserAnswer } from '../../types/questions';
+import { QuestionArtist, QuestionGenre, Question, UserAnswer } from '../../types/questions';
 import { Navigate } from 'react-router-dom';
 import QuestionArtistScreen from '../question-artist-screen/question-artist-screen';
 import QuestionGenreScreen from '../question-genre-screen/question-genre-screen';
@@ -11,13 +11,8 @@ import Mistakes from '../mistakes/mistakes';
 const ArtistQuestionScreenWrapped = withAudioPlayer(QuestionArtistScreen);
 const GenreQuestionScreenWrapped = withAudioPlayer(QuestionGenreScreen);
 
-type GameScreenProps = {
-  questions: Questions;
-}
-
-function GameScreen(props:GameScreenProps): JSX.Element {
-  const {questions} = props;
-  const {step, mistakes} = useAppSelector((state) => state);
+function GameScreen(): JSX.Element {
+  const {step, mistakes, questions} = useAppSelector((state) => state);
   const question = questions[step];
   const dispatch = useAppDispatch();
 
