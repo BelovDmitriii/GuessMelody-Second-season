@@ -1,4 +1,4 @@
-import { QuestionArtist, QuestionGenre, Question, UserAnswer } from '../../types/questions';
+import { Question, UserAnswer } from '../../types/questions';
 import { Navigate } from 'react-router-dom';
 import QuestionArtistScreen from '../question-artist-screen/question-artist-screen';
 import QuestionGenreScreen from '../question-genre-screen/question-genre-screen';
@@ -21,7 +21,7 @@ function GameScreen(): JSX.Element {
   }
 
   if(step >= questions.length || !question){
-    return <Navigate to={AppRoute.Root} />;
+    return <Navigate to={AppRoute.Result} />;
   }
 
   const onUserAnswer = (questionItem: Question, userAnswer: UserAnswer) => {
@@ -34,7 +34,7 @@ function GameScreen(): JSX.Element {
       return (
         <ArtistQuestionScreenWrapped
           key={step}
-          question={question as QuestionArtist}
+          question={question}
           onAnswer={onUserAnswer}
         >
           <Mistakes count={mistakes} />
@@ -44,7 +44,7 @@ function GameScreen(): JSX.Element {
       return (
         <GenreQuestionScreenWrapped
           key={step}
-          question={question as QuestionGenre}
+          question={question}
           onAnswer={onUserAnswer}
         >
           <Mistakes count = {mistakes} />
