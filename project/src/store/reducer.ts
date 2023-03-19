@@ -2,16 +2,23 @@ import { createReducer } from '@reduxjs/toolkit';
 import { incrementStep, resetGame, checkUserAnswer, loadQuestions, requireAuthorization } from './action';
 import { AuthorizationStatus, FIRST_GAME_STEP } from '../consts/consts';
 import { isAnswerCorrect } from '../game';
-import { questions as questionItems } from '../mocks/questions';
+import { Questions } from '../types/questions';
 
 const STEP_COUNT = 1;
 
-const initialState = {
+type InitialState = {
+  mistakes: number;
+  step: number;
+  questions: Questions;
+  authorizationStatus: AuthorizationStatus;
+};
+
+const initialState:InitialState = {
   mistakes: 0,
   step: FIRST_GAME_STEP,
-  questions: questionItems,
+  questions: [],
   authorizationStatus: AuthorizationStatus.Unknown,
-};
+}
 
 const reducer = createReducer(initialState, (builder) => {
   builder
