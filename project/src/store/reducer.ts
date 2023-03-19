@@ -18,7 +18,7 @@ const initialState:InitialState = {
   step: FIRST_GAME_STEP,
   questions: [],
   authorizationStatus: AuthorizationStatus.Unknown,
-}
+};
 
 const reducer = createReducer(initialState, (builder) => {
   builder
