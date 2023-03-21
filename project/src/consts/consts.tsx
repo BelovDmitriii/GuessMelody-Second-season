@@ -15,6 +15,7 @@ export enum AuthorizationStatus{
 
 export const FIRST_GAME_STEP = 0;
 export const MAX_MISTAKE_COUNT = 3;
+export const TIMEOUT_SHOW_ERROR = 3000;
 
 export enum GameType {
   Genre = 'genre',
@@ -25,4 +26,10 @@ export enum APIRoute {
   Question = '/questions',
   Login = '/login',
   Logout = '/logout',
+}
+
+export enum HTTP_CODE {
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  NOT_FOUND = 404,
 }
