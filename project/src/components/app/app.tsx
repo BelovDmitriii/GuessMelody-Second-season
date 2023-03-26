@@ -1,5 +1,5 @@
 import WelcomeScreen from '../welcome-screen/welcome-screen';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { AppRoute, MAX_MISTAKE_COUNT } from '../../consts/consts';
 import LoginScreen from '../login-screen/login-screen';
 import GameOverScreen from '../game-over-screen/game-over-screen';
@@ -10,6 +10,8 @@ import PrivateRoutes from '../private-routes/private-routes';
 import GameScreen from '../game-screen/game-screen';
 import SomeScreen from '../some-screen/some-screen';
 import { isCheckedAuth } from '../../game';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browser-history';
 
 function App(): JSX.Element {
   const {authorizationStatus, isDataLoaded} = useAppSelector((state) => state);
@@ -21,7 +23,7 @@ function App(): JSX.Element {
   }
 
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route
           path={AppRoute.Root}
@@ -60,7 +62,7 @@ function App(): JSX.Element {
           element={<SomeScreen />}
         />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 
