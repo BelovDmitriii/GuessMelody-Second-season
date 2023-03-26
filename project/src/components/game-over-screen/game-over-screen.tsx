@@ -1,8 +1,11 @@
 import { AppRoute } from '../../consts/consts';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../hooks';
+import { resetGame } from '../../store/action';
 
 function GameOverScreen(): JSX.Element {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   return(
     <section className="result">
@@ -12,7 +15,10 @@ function GameOverScreen(): JSX.Element {
       <button
         className="replay"
         type="button"
-        onClick = {() => navigate(AppRoute.Root)}
+        onClick = {() => {
+          dispatch(resetGame());
+          navigate(AppRoute.Root);
+        }}
       >
         Попробовать ещё раз
       </button>
