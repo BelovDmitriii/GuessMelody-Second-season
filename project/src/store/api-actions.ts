@@ -24,7 +24,7 @@ export const fetchQuestionAction = createAsyncThunk(
   'data/fetchQuestions',
   async () => {
     try{
-      const {data} = await api.get<Questions>(APIRoute.Question);
+      const {data} = await api.get<Questions>(APIRoute.Questions);
       store.dispatch(loadQuestions(data));
     } catch (error){
       errorHandle(error);

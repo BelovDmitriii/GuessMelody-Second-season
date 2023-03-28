@@ -23,7 +23,7 @@ export enum GameType {
 }
 
 export enum APIRoute {
-  Question = '/questions',
+  Questions = '/questions',
   Login = '/login',
   Logout = '/logout',
 }
