@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './components/app/app';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import ErrorMessage from './components/error-message/errorMessage';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/inject-style';
 import { checkAuthAction, fetchQuestionAction } from './store/api-actions';
 
 store.dispatch(fetchQuestionAction);
@@ -12,7 +13,7 @@ store.dispatch(checkAuthAction);
 ReactDOM.render(
   <React.StrictMode>
     <Provider store = {store} >
-      <ErrorMessage />
+      <ToastContainer />
       <App />
     </Provider>
   </React.StrictMode>,

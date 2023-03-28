@@ -2,23 +2,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../store';
 import { store } from '../store';
 import { Questions } from '../types/questions';
-import { loadQuestions, requireAuthorization, setError } from './action';
-import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../consts/consts';
+import { loadQuestions, requireAuthorization, redirectToRoute } from './action';
+import { APIRoute, AuthorizationStatus, AppRoute } from '../consts/consts';
 import { AuthData } from '../types/auth-data';
 import { UserData } from '../types/user-data';
 import { dropToken, saveToken } from '../services/token';
 import { errorHandle } from '../services/error-handle';
-
-export const clearErrorAction = createAsyncThunk(
-  'game/clearError',
-  () => {
-    setTimeout(
-      () => store.dispatch(setError('')),
-      TIMEOUT_SHOW_ERROR,
-    );
-  },
-);
-
 
 export const fetchQuestionAction = createAsyncThunk(
   'data/fetchQuestions',
@@ -52,6 +41,7 @@ export const loginAction = createAsyncThunk(
       const {data: {token}} = await api.post<UserData>(APIRoute.Login, {email, password});
       saveToken(token);
       store.dispatch(requireAuthorization(AuthorizationStatus.Auth));
+      store.dispatch(redirectToRoute(AppRoute.Result));
     } catch(error){
       errorHandle(error);
       store.dispatch(requireAuthorization(AuthorizationStatus.NoAuth));

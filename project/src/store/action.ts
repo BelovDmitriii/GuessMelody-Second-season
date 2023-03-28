@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
-import { AuthorizationStatus } from '../consts/consts';
+import { AppRoute, AuthorizationStatus } from '../consts/consts';
 import { UserAnswer, Question, Questions } from '../types/questions';
 
 export const incrementStep = createAction('game/incrementStep');
@@ -7,4 +7,4 @@ export const checkUserAnswer = createAction<{question: Question; userAnswer: Use
 export const resetGame = createAction('game/reset');
 export const loadQuestions = createAction<Questions>('data/loadQuestions');
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
-export const setError = createAction<string>('game/setError');
+export const redirectToRoute = createAction<AppRoute>('game/redirectToRoute');
