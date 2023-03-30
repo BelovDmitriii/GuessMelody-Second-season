@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../consts/consts';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from '../..';
 import { resetGame } from '../../store/action';
 
 type WelcomeScreenProps = {

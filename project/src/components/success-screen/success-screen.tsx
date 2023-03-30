@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../consts/consts';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../..';
 import { resetGame } from '../../store/action';
 import { logoutAction } from '../../store/api-actions';
 

@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import QuestionArtistScreen from '../question-artist-screen/question-artist-screen';
 import QuestionGenreScreen from '../question-genre-screen/question-genre-screen';
 import withAudioPlayer from '../../hocks/with-audio-player/with-audio-player';
-import { useAppDispatch, useAppSelector } from '../../hooks';
+import { useAppDispatch, useAppSelector } from '../..';
 import { AppRoute, GameType, MAX_MISTAKE_COUNT } from '../../consts/consts';
 import { incrementStep, checkUserAnswer } from '../../store/action';
 import Mistakes from '../mistakes/mistakes';
