@@ -1,8 +1,7 @@
 import Logo from '../logo/logo';
 import { QuestionGenre, UserGenreQuestionAnswer } from '../../types/questions';
-import { FormEvent, PropsWithChildren } from 'react';
-import { useUserAnswers } from '../../hooks/use-user-answer';
-import QuestionGenreItem from '../question-genre-item/question-genre-item';
+import { PropsWithChildren } from 'react';
+import QuestionGenreList from '../question-genre-list/question-genre-list';
 
 type QuestionGenreScreenProps = PropsWithChildren<{
   question: QuestionGenre;
@@ -12,8 +11,7 @@ type QuestionGenreScreenProps = PropsWithChildren<{
 
 function QuestionGenreScreen(props: QuestionGenreScreenProps):JSX.Element {
   const {question, onAnswer, renderPlayer, children} = props;
-  const {answers, genre} = question;
-  const [userAnswers, handleAnswerChange] = useUserAnswers(question);
+  const {genre} = question;
 
   return(
     <section className="game game--genre">
@@ -31,29 +29,11 @@ function QuestionGenreScreen(props: QuestionGenreScreenProps):JSX.Element {
 
       <section className="game__screen">
         <h2 className="game__title">Выберите {genre} треки</h2>
-        <form
-          className="game__tracks"
-          onSubmit={(evt:FormEvent<HTMLFormElement>) => {
-            evt.preventDefault();
-            onAnswer(question, userAnswers);
-          }}
-        >
-          {answers.map((answer, id) => {
-            const keyValue = `${id}-${answer.src}`;
-            return(
-              <QuestionGenreItem
-                answer={answer}
-                id={id}
-                key={keyValue}
-                onChange={handleAnswerChange}
-                renderPlayer={renderPlayer}
-                userAnswers={userAnswers[id]}
-              />
-            );
-          })}
-
-          <button className="game__submit button" type="submit">Ответить</button>
-        </form>
+        <QuestionGenreList
+          question={question}
+          onAnswer={onAnswer}
+          renderPlayer={renderPlayer}
+        />
       </section>
     </section>
   );
