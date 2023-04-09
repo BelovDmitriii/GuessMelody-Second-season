@@ -1,7 +1,7 @@
 import { FormEvent, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../consts/consts';
-import { useAppDispatch } from '../..';
+import { useAppDispatch } from '../../hooks/index';
 import { loginAction } from '../../store/api-actions';
 import { AuthData } from '../../types/auth-data';
 

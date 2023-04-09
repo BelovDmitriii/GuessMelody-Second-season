@@ -5,7 +5,7 @@ import LoginScreen from '../login-screen/login-screen';
 import GameOverScreen from '../game-over-screen/game-over-screen';
 import SuccessScreen from '../success-screen/success-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import { useAppSelector } from '../..';
+import { useAppSelector } from '../../hooks/index';
 import PrivateRoutes from '../private-routes/private-routes';
 import GameScreen from '../game-screen/game-screen';
 import SomeScreen from '../some-screen/some-screen';

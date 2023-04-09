@@ -1,6 +1,6 @@
 import { AppRoute } from '../../consts/consts';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../..';
+import { useAppDispatch } from '../../hooks';
 import { resetGame } from '../../store/action';
 
 function GameOverScreen(): JSX.Element {
