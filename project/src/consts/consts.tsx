@@ -32,3 +32,9 @@ export enum HTTP_CODE {
   UNAUTHORIZED = 401,
   NOT_FOUND = 404,
 }
+
+export enum NameSpace {
+  data = 'DATA',
+  user = 'USER',
+  game = 'GAME',
+};
