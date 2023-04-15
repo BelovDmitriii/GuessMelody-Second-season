@@ -12,9 +12,13 @@ import SomeScreen from '../some-screen/some-screen';
 import { isCheckedAuth } from '../../game';
 import HistoryRouter from '../history-route/history-route';
 import browserHistory from '../../browser-history';
+import { getAuthorizationStatus } from '../../store/user-process/selecrtors';
+import { getLoadedStatus } from '../../store/game-data/selectors';
 
 function App(): JSX.Element {
-  const {authorizationStatus, isDataLoaded} = useAppSelector((state) => state);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus);
+
+  const isDataLoaded = useAppSelector(getLoadedStatus);
 
   if(isCheckedAuth(authorizationStatus) || isDataLoaded){
     return(

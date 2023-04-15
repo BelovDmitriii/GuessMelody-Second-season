@@ -13,15 +13,12 @@ export const errorHandle = (error: ErrorType): void => {
   if(response) {
     switch(response.status) {
       case HTTP_CODE.BAD_REQUEST:
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         toast.info(response.data.error);
         break;
       case HTTP_CODE.NOT_FOUND:
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         toast.info(response.data.error);
         break;
       case HTTP_CODE.UNAUTHORIZED:
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         toast.info(response.data.error);
         break;
     }

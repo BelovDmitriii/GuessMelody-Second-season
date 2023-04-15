@@ -28,3 +28,5 @@ export const gameProcess = createSlice ({
     },
   },
 });
+
+export const {incrementStep, checkUserAnswer, resetGame} = gameProcess.actions;

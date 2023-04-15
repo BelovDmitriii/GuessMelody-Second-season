@@ -1,14 +1,16 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../consts/consts';
 import { useAppDispatch, useAppSelector } from '../../hooks/index';
-import { resetGame } from '../../store/action';
+import { resetGame } from '../../store/game-process/game-process';
 import { logoutAction } from '../../store/api-actions';
+import { getMistakeCount, getStep } from '../../store/game-process/selectors';
 
 function SuccessScreen(): JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const {step, mistakes} = useAppSelector((state) => state);
+  const step = useAppSelector(getStep);
+  const mistakes = useAppSelector(getMistakeCount);
   const correctAnswers = step - mistakes;
 
   return(

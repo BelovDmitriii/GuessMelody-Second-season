@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../consts/consts';
 import { useAppDispatch } from '../../hooks/index';
-import { resetGame } from '../../store/action';
+import { resetGame } from '../../store/game-process/game-process';
 
 type WelcomeScreenProps = {
   errorsCount: number;
