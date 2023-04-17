@@ -3,7 +3,7 @@ import { makeFakeQuestionArtist } from './utils/mocks';
 
 const mockArtistQuestion = makeFakeQuestionArtist();
 
-describe('Function': 'isArtistAnswerCorrect', () => {
+describe('Function: isArtistAnswerCorrect', () => {
   it('should return "true" when answer is correct', () => {
     const {artist: correctAnswer} = mockArtistQuestion.song;
     expect(isArtistAnswerCorrect(mockArtistQuestion, correctAnswer))
@@ -11,7 +11,7 @@ describe('Function': 'isArtistAnswerCorrect', () => {
   });
   it('should return "false" when answer is incorrect', () => {
     const incorrectAnswer = 'unknown';
-    expect(isArtistAnswerCorrect(mockArtistQuestion, correctAnswer))
+    expect(isArtistAnswerCorrect(mockArtistQuestion, incorrectAnswer))
       .toBe(false);
   });
 });
