@@ -23,11 +23,16 @@ describe('Middleware: redirect', () => {
     fakeHistory.push('');
   });
 
-  it('должне быть перенаправлен на /login', () => {
+  it('должен быть перенаправлен на /login', () => {
     store.dispatch(redirectToRoute(AppRoute.Login));
     expect(fakeHistory.location.pathname).toBe(AppRoute.Login);
     expect(store.getActions()).toEqual([
       redirectToRoute(AppRoute.Login),
     ]);
+  });
+
+  it('не должен быть перенаправлен на /lose из-за неправильного действия', () => {
+    store.dispatch({type: 'UNKNOWN_ACTION', payload: AppRoute.Lose});
+    expect(fakeHistory.location.pathname).not.toBe(AppRoute.Lose);
   });
 });
