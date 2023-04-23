@@ -34,5 +34,5 @@ describe('Middleware: redirect', () => {
   it('не должен быть перенаправлен на /lose из-за неправильного действия', () => {
     store.dispatch({type: 'UNKNOWN_ACTION', payload: AppRoute.Lose});
     expect(fakeHistory.location.pathname).not.toBe(AppRoute.Lose);
-  });
+});
 });
