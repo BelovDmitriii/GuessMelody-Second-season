@@ -48,6 +48,7 @@ function AudioPlayer({isPlaying, onPlayButtonClick, src}: AudioPlayerProps):JSX.
         <audio
           src={src}
           ref={audioRef}
+          data-testid = "audio"
         />
       </div>
     </>
