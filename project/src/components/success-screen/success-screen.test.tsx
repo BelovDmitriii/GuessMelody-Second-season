@@ -4,31 +4,35 @@ import { AppRoute } from '../../consts/consts';
 import { Provider } from 'react-redux';
 import HistoryRouter from '../history-route/history-route';
 import { Route, Routes } from 'react-router-dom';
-import GameOverScreen from './game-over-screen';
+import SuccessScreen from './success-screen';
 import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 const mockStore = configureMockStore();
 const history = createMemoryHistory();
-const store = mockStore();
+history.push(AppRoute.Result);
 
-describe('Component: GameOverScreen', () => {
-  beforeEach(() => {
-    history.push(AppRoute.Lose);
-  });
+const store = mockStore({
+  GAME: {step: 10, mistakes: 2},
+});
+
+describe('Component: SuccessScreen', () => {
 
   it('должен отрисовываться правильно', () => {
+    const correctlyQuestionsCount = 8;
+    const mistakes = 2;
+
     render(
       <Provider store={store}>
         <HistoryRouter history={history}>
-          <GameOverScreen />
+          <SuccessScreen />
         </HistoryRouter>
       </Provider>
     );
 
-    expect(screen.getByText(/Какая жалость!/i)).toBeInTheDocument();
-    expect(screen.getByText(/У вас закончились все попытки/i)).toBeInTheDocument();
-    expect(screen.getByText(/Попробовать ещё раз/i)).toBeInTheDocument();
+    expect(screen.getByText(/Вы настоящий меломан!/i)).toBeInTheDocument();
+    expect(screen.getByText(/Вы ответили правильно/i)).toHaveTextContent(correctlyQuestionsCount.toString());
+    expect(screen.getByText(/Вы ответили неправильно/i)).toHaveTextContent(mistakes.toString());
   });
 
   it('должен перенаправить, когда пользователь нажмет кнопку "Replay Button"',() => {
@@ -37,15 +41,15 @@ describe('Component: GameOverScreen', () => {
         <HistoryRouter history={history}>
           <Routes>
             <Route
-              path={AppRoute.Lose}
+              path={AppRoute.Result}
               element={
-                <GameOverScreen />
+                <SuccessScreen />
               }
             />
             <Route
               path={AppRoute.Game}
               element={
-                <h1>Mock Game Screen</h1>
+                <h1>Game Screen</h1>
               }
             />
           </Routes>
@@ -53,9 +57,9 @@ describe('Component: GameOverScreen', () => {
       </Provider>
     );
 
-    userEvent.click(screen.getByText(/Попробовать ещё раз/i));
+    userEvent.click(screen.getByText(/Сыграть ещё раз/i));
 
-    expect(screen.getByText(/Mock Game Screen/i)).toBeInTheDocument();
+    expect(screen.getByText(/Game Screen/i)).toBeInTheDocument();
   });
 
 });
