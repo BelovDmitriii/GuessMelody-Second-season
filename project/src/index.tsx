@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './components/app/app';
 import { Provider } from 'react-redux';
 import { store } from './store';
@@ -12,7 +12,11 @@ import browserHistory from './browser-history';
 store.dispatch(fetchQuestionAction);
 store.dispatch(checkAuthAction);
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(
+  document.getElementById('root') as HTMLElement,
+);
+
+root.render(
   <React.StrictMode>
     <Provider store = {store} >
       <HistoryRouter history={browserHistory} >
@@ -21,4 +25,4 @@ ReactDOM.render(
       </HistoryRouter>
     </Provider>
   </React.StrictMode>,
-  document.getElementById('root'));
+);
